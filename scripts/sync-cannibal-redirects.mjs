@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 /**
- * Syncs locale 301s for cannibal pageIds → pillar pageIds into public/_redirects
- * and functions/cannibal-redirects.json (used by Workers middleware).
- * Targets are read from src/data/seo-canonical.ts (single source of truth).
+ * Syncs locale 301s for cannibal pageIds → pillar pageIds into
+ * functions/cannibal-redirects.json (Workers + Pages middleware).
+ *
+ * Do not write these into public/_redirects — Cloudflare Workers caps
+ * _redirects at 100 dynamic rules and treats every line as dynamic.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -42,11 +44,6 @@ function rallySlugBlock(src, pageId) {
 const TARGETS = readCannibalTargets();
 const routing = readFileSync(ROUTING, 'utf8');
 const map = {};
-const lines = [
-	'',
-	'# Auto-generated cannibal locale redirects (scripts/sync-cannibal-redirects.mjs)',
-	'# Do not edit by hand — regenerated on sync:brand / prebuild',
-];
 
 for (const [fromId, toId] of Object.entries(TARGETS)) {
 	const fromSlugs = rallySlugBlock(routing, fromId);
@@ -59,8 +56,6 @@ for (const [fromId, toId] of Object.entries(TARGETS)) {
 		const toPath = `/${locale}/${toSlug}/`;
 		map[fromPath] = toPath;
 		map[`/${locale}/${fromSlug}`] = toPath;
-		lines.push(`${fromPath.slice(0, -1)} ${toPath} 301`);
-		lines.push(`${fromPath} ${toPath} 301`);
 	}
 }
 
@@ -69,12 +64,11 @@ let redirects = readFileSync(REDIRECTS, 'utf8');
 const start = redirects.indexOf(markerStart);
 if (start >= 0) {
 	const lineStart = redirects.lastIndexOf('\n', start);
-	redirects = redirects.slice(0, lineStart >= 0 ? lineStart : start).trimEnd() + '\n';
+	redirects = `${redirects.slice(0, lineStart >= 0 ? lineStart : start).trimEnd()}\n`;
+	writeFileSync(REDIRECTS, redirects);
 }
 
-redirects = `${redirects.trimEnd()}\n${lines.join('\n')}\n`;
-writeFileSync(REDIRECTS, redirects);
 writeFileSync(JSON_OUT, `${JSON.stringify(map, null, 2)}\n`);
 console.log(
-	`Synced ${Object.keys(map).length / 2} cannibal locale redirect pairs (${Object.keys(TARGETS).length} pageIds)`,
+	`Synced ${Object.keys(map).length / 2} cannibal locale redirect pairs (${Object.keys(TARGETS).length} pageIds) → ${path.relative(ROOT, JSON_OUT)}`,
 );
