@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/** Final pass: fix remaining Tarkov references in src/. */
+/** Final pass: fix remaining Squad references in src/. */
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,29 +8,29 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 's
 const REMOVE_PAGE_IDS = ['hacks', 'cheat-download', 'mod-menu', 'soft-aim', 'best-cheats', 'aimbot-hack', 'esp-hack', 'unlock-all'];
 
 const REPLACEMENTS = [
-	['tarkovImages', 'tarkovImages'],
-	["from '../data/tarkov'", "from '../data/tarkov'"],
-	["from './tarkov'", "from './tarkov'"],
-	['/undetected-tarkov-cheats/', '/undetected-tarkov-cheats/'],
-	['/tarkov-wallhack/', '/tarkov-wallhack/'],
-	['/tarkov-radar-hack/', '/tarkov-radar-hack/'],
-	['/battleye-bypass/', '/battleye-bypass/'],
-	['/tarkov-cheats-2026/', '/tarkov-cheats-2026/'],
-	['/tarkov-aimbot/', '/tarkov-aimbot/'],
-	['/tarkov-esp/', '/tarkov-esp/'],
-	['/tarkov-cheats/', '/tarkov-esp/'],
-	['Tarkov Cheats', 'Tarkov Cheats'],
-	['Tarkov cheats', 'Tarkov cheats'],
-	['Tarkov wallhack', 'Escape from Tarkov wallhack'],
-	['Tarkov radar', 'Escape from Tarkov radar'],
-	['Tarkov Aimbot', 'Escape from Tarkov Aimbot'],
-	['Tarkov ESP', 'Escape from Tarkov ESP'],
-	['Escape from Tarkov', 'Escape from Tarkov'],
-	['BattlEye', 'BattlEye anti-cheat'],
-	['battleye', 'battleye'],
-	['tarkovcheats.org', 'tarkovcheats.org'],
+	['squadImages', 'squadImages'],
+	["from '../data/squad'", "from '../data/squad'"],
+	["from './squad'", "from './squad'"],
+	['/undetected-squad-hacks/', '/undetected-squad-hacks/'],
+	['/squad-wallhack/', '/squad-wallhack/'],
+	['/squad-radar-hack/', '/squad-radar-hack/'],
+	['/eac-bypass/', '/eac-bypass/'],
+	['/squad-hacks-2026/', '/squad-hacks-2026/'],
+	['/squad-aimbot/', '/squad-aimbot/'],
+	['/squad-esp/', '/squad-esp/'],
+	['/squad-hacks/', '/squad-esp/'],
+	['Squad Hacks', 'Squad Hacks'],
+	['Squad hacks', 'Squad hacks'],
+	['Squad wallhack', 'Squad wallhack'],
+	['Squad radar', 'Squad radar'],
+	['Squad Aimbot', 'Squad Aimbot'],
+	['Squad ESP', 'Squad ESP'],
+	['Squad', 'Squad'],
+	['Easy Anti-Cheat', 'Easy Anti-Cheat'],
+	['eac', 'eac'],
+	['squadhacks.net', 'squadhacks.net'],
 	['operatorEsp', 'playerEsp'],
-	['extractFight', 'rebootFight'],
+	['rallyFight', 'rebootFight'],
 	['alMazrah', 'battleRoyaleIsland'],
 ];
 

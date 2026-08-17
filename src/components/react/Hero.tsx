@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import I18nProvider from './I18nProvider';
 
+type ChipKey = 'chipEsp' | 'chipAim' | 'chipRadar' | 'chipUpdates';
+
 type Props = {
 	locale: string;
 	siteName: string;
@@ -13,6 +15,9 @@ type Props = {
 	heroHeight: number;
 	/** When true, use brand EN hero keys; otherwise localized hero.* */
 	useBrandHero?: boolean;
+	/** EN copy from brand.ts — keeps SSR and client in sync */
+	heroLede?: string;
+	chips?: Record<ChipKey, string>;
 };
 
 const chipKeys = [
@@ -76,10 +81,12 @@ function HeroInner({
 	heroWidth,
 	heroHeight,
 	useBrandHero = true,
+	heroLede,
+	chips,
 }: Props) {
 	const { t } = useTranslation();
 	const title = useBrandHero ? t('hero.title') : t('hero.accent');
-	const subtitle = useBrandHero ? t('hero.subtitle') : t('hero.subtitle');
+	const subtitle = useBrandHero && heroLede ? heroLede : t('hero.subtitle');
 	const ctaBuy = useBrandHero ? t('cta.buy') : t('hero.buyNow');
 	const priceFrom = t('hero.priceFrom');
 	const priceLabel = priceFrom ? `${priceFrom} $${monthlyPrice}` : `$${monthlyPrice}`;
@@ -132,7 +139,9 @@ function HeroInner({
 								<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
 									<ChipIcon icon={chip.icon} />
 								</svg>
-								<span data-edit={useBrandHero ? chip.key : undefined}>{t(`hero.${chip.key}`)}</span>
+								<span data-edit={useBrandHero ? chip.key : undefined}>
+									{useBrandHero && chips ? chips[chip.key] : t(`hero.${chip.key}`)}
+								</span>
 							</li>
 						))}
 					</ul>

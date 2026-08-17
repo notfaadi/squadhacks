@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Completes escape-from-tarkov-cheats SEO audit: add missing pages, fix leftovers, strip Zadeyo from meta.
+ * Completes escape-from-squad-hacks SEO audit: add missing pages, fix leftovers, strip Zadeyo from meta.
  * Run: node scripts/complete-seo-audit.mjs
  */
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
@@ -11,52 +11,52 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const NODE = 'C:\\Program Files\\nodejs\\node.exe';
 
 const EXTRA_PAGES = [
-	{ id: 'hacks', dir: 'tarkov-cheats', pageId: 'hacks' },
-	{ id: 'cheat-download', dir: 'tarkov-cheat-download', pageId: 'cheat-download' },
-	{ id: 'mod-menu', dir: 'tarkov-mod-menu', pageId: 'mod-menu' },
-	{ id: 'soft-aim', dir: 'tarkov-soft-aim', pageId: 'soft-aim' },
-	{ id: 'best-cheats', dir: 'best-tarkov-cheats', pageId: 'best-cheats' },
-	{ id: 'aimbot-hack', dir: 'tarkov-aimbot-hack', pageId: 'aimbot-hack' },
-	{ id: 'esp-hack', dir: 'tarkov-esp-hack', pageId: 'esp-hack' },
-	{ id: 'unlock-all', dir: 'tarkov-unlock-all', pageId: 'unlock-all' },
+	{ id: 'hacks', dir: 'squad-hacks', pageId: 'hacks' },
+	{ id: 'cheat-download', dir: 'squad-cheat-download', pageId: 'cheat-download' },
+	{ id: 'mod-menu', dir: 'squad-mod-menu', pageId: 'mod-menu' },
+	{ id: 'soft-aim', dir: 'squad-soft-aim', pageId: 'soft-aim' },
+	{ id: 'best-cheats', dir: 'best-squad-hacks', pageId: 'best-cheats' },
+	{ id: 'aimbot-hack', dir: 'squad-aimbot-hack', pageId: 'aimbot-hack' },
+	{ id: 'esp-hack', dir: 'squad-esp-hack', pageId: 'esp-hack' },
+	{ id: 'unlock-all', dir: 'squad-unlock-all', pageId: 'unlock-all' },
 ];
 
 const GLOBAL_REPLACEMENTS = [
-	[/tarkov-tarkov/g, 'tarkov'],
-	[/battleye-bypass-tarkov/g, 'battleye-bypass'],
-	[/Escape from Tarkov/g, 'Escape from Tarkov'],
-	[/Escape from Tarkov/g, 'Escape from Tarkov'],
-	[/Call of Duty/g, 'Escape from Tarkov'],
-	[/Tarkov Wallhack/g, 'Escape from Tarkov Wallhack'],
-	[/Tarkov Radar Hack/g, 'Escape from Tarkov Radar Hack'],
-	[/Tarkov Cheat Features/g, 'Escape from Tarkov Cheat Features'],
-	[/Tarkov Cheat Pricing/g, 'Escape from Tarkov Cheat Pricing'],
-	[/Tarkov Cheat Setup/g, 'Escape from Tarkov Cheat Setup'],
-	[/Tarkov Cheat Status/g, 'Escape from Tarkov Cheat Status'],
-	[/Tarkov Cheat Support/g, 'Escape from Tarkov Cheat Support'],
-	[/Tarkov squad fight/g, 'Escape from Tarkov squad fight'],
-	[/Tarkov squad builder/g, 'Escape from Tarkov loadout builder'],
-	[/Tarkov store header/g, 'Escape from Tarkov header'],
-	[/Tarkov wasteland combat/g, 'Escape from Tarkov battle royale combat'],
-	[/Tarkov loadout builder/g, 'Escape from Tarkov loadout builder'],
-	[/Tarkov pricing/g, 'Escape from Tarkov pricing'],
-	[/Tarkov BattlEye anti-cheat/g, 'Escape from Tarkov BattlEye anti-cheat'],
-	[/on Tarkov/g, 'on Escape from Tarkov'],
-	[/for Tarkov/g, 'for Escape from Tarkov'],
-	[/Tarkov guides/g, 'Escape from Tarkov guides'],
-	[/Tarkov guide/g, 'Escape from Tarkov guide'],
-	[/Tarkov hileleri/g, 'Escape from Tarkov hileleri'],
-	[/Tarkov hile/g, 'Escape from Tarkov hile'],
-	[/Tarkov hileleri/g, 'Escape from Tarkov hileleri'],
-	[/cheatów Tarkov/g, 'cheatów Escape from Tarkov'],
-	[/cheat Tarkov/g, 'cheat Escape from Tarkov'],
-	[/cheats Tarkov/g, 'cheats Escape from Tarkov'],
-	[/trucos Tarkov/g, 'trucos Escape from Tarkov'],
-	[/triche Tarkov/g, 'triche Escape from Tarkov'],
-	[/trucchi Tarkov/g, 'trucchi Escape from Tarkov'],
-	[/Wallhack Tarkov/g, 'Escape from Tarkov Wallhack'],
-	[/cheat Tarkov undetected/g, 'cheat Escape from Tarkov undetected'],
-	[/cheats Tarkov undetected/g, 'cheats Escape from Tarkov undetected'],
+	[/squad-squad/g, 'squad'],
+	[/eac-bypass-squad/g, 'eac-bypass'],
+	[/Squad/g, 'Squad'],
+	[/Squad/g, 'Squad'],
+	[/Call of Duty/g, 'Squad'],
+	[/Squad Wallhack/g, 'Squad Wallhack'],
+	[/Squad Radar Hack/g, 'Squad Radar Hack'],
+	[/Squad Cheat Features/g, 'Squad Cheat Features'],
+	[/Squad Cheat Pricing/g, 'Squad Cheat Pricing'],
+	[/Squad Cheat Setup/g, 'Squad Cheat Setup'],
+	[/Squad Cheat Status/g, 'Squad Cheat Status'],
+	[/Squad Cheat Support/g, 'Squad Cheat Support'],
+	[/Squad squad fight/g, 'Squad squad fight'],
+	[/Squad squad builder/g, 'Squad loadout builder'],
+	[/Squad store header/g, 'Squad header'],
+	[/Squad wasteland combat/g, 'Squad battle royale combat'],
+	[/Squad loadout builder/g, 'Squad loadout builder'],
+	[/Squad pricing/g, 'Squad pricing'],
+	[/Squad Easy Anti-Cheat/g, 'Squad Easy Anti-Cheat'],
+	[/on Squad/g, 'on Squad'],
+	[/for Squad/g, 'for Squad'],
+	[/Squad guides/g, 'Squad guides'],
+	[/Squad guide/g, 'Squad guide'],
+	[/Squad hileleri/g, 'Squad hileleri'],
+	[/Squad hile/g, 'Squad hile'],
+	[/Squad hileleri/g, 'Squad hileleri'],
+	[/cheatów Squad/g, 'cheatów Squad'],
+	[/cheat Squad/g, 'cheat Squad'],
+	[/cheats Squad/g, 'cheats Squad'],
+	[/trucos Squad/g, 'trucos Squad'],
+	[/triche Squad/g, 'triche Squad'],
+	[/trucchi Squad/g, 'trucchi Squad'],
+	[/Wallhack Squad/g, 'Squad Wallhack'],
+	[/cheat Squad undetected/g, 'cheat Squad undetected'],
+	[/cheats Squad undetected/g, 'cheats Squad undetected'],
 	[/Verdansk beams/g, 'long-range AR beams'],
 	[/scav-run room clears/g, 'close-quarters room clears'],
 	[/Verdansk and Urzikstan/g, 'Verdansk and scav-run'],
@@ -68,13 +68,13 @@ const GLOBAL_REPLACEMENTS = [
 	[/Activision security/g, 'Epic Games security'],
 	[/Activision bans/g, 'Epic Games bans'],
 	[/Activision/g, 'Epic Games'],
-	[/battleye/gi, 'battleye'],
-	[/BattlEye/g, 'BattlEye anti-cheat'],
-	[/escape-from-tarkov-cheats/g, 'escape-from-tarkov-cheats'],
-	[/escape-from-tarkov/g, 'tarkov'],
-	[/Undetected Wallhack for Call of Duty/g, 'Undetected Wallhack for Escape from Tarkov'],
+	[/eac/gi, 'eac'],
+	[/Easy Anti-Cheat/g, 'Easy Anti-Cheat'],
+	[/escape-from-squad-hacks/g, 'escape-from-squad-hacks'],
+	[/squad/g, 'squad'],
+	[/Undetected Wallhack for Call of Duty/g, 'Undetected Wallhack for Squad'],
 	[/How ESP wallhack, radar, and Aimbot rebuild after Call of Duty anti-cheat/g,
-		'How ESP wallhack, radar, and Aimbot rebuild after Escape from Tarkov anti-cheat'],
+		'How ESP wallhack, radar, and Aimbot rebuild after Squad anti-cheat'],
 ];
 
 /** Remove Zadeyo from meta description/title strings only */
@@ -90,7 +90,7 @@ function stripZadeyoFromMeta(text) {
 		.replace(/\s*Zadeyo delivery\.?/gi, 'instant digital delivery.')
 		.replace(/\s*and Zadeyo delivery\.?/gi, ' and instant digital delivery.')
 		.replace(/\|\s*Instant Zadeyo Delivery/g, '| Instant Digital Delivery')
-		.replace(/Buy on Zadeyo/g, 'Buy Tarkov Cheats')
+		.replace(/Buy on Zadeyo/g, 'Buy Squad Hacks')
 		.replace(/\s{2,}/g, ' ')
 		.trim();
 }
@@ -169,38 +169,38 @@ import LocalizedPage from '../../components/LocalizedPage.astro';
 async function fixLocalesBlogUi() {
 	const file = path.join(ROOT, 'src', 'data', 'i18n', 'locales.ts');
 	let content = await readFile(file, 'utf8');
-	content = content.replace(/Tarkov guides/g, 'Escape from Tarkov guides');
-	content = content.replace(/Tarkov guide/g, 'Escape from Tarkov guide');
-	content = content.replace(/Tarkov hileleri/g, 'Escape from Tarkov hileleri');
-	content = content.replace(/Tarkov hile/g, 'Escape from Tarkov hile');
-	content = content.replace(/cheat Tarkov/g, 'cheat Escape from Tarkov');
-	content = content.replace(/cheats Tarkov/g, 'cheats Escape from Tarkov');
-	content = content.replace(/trucos Tarkov/g, 'trucos Escape from Tarkov');
-	content = content.replace(/triche Tarkov/g, 'triche Escape from Tarkov');
-	content = content.replace(/trucchi Tarkov/g, 'trucchi Escape from Tarkov');
-	content = content.replace(/cheatów Tarkov/g, 'cheatów Escape from Tarkov');
-	content = content.replace(/читов Tarkov/g, 'читов Escape from Tarkov');
-	content = content.replace(/читів Tarkov/g, 'читів Escape from Tarkov');
-	content = content.replace(/Tarkovチート/g, 'Escape from Tarkovチート');
-	content = content.replace(/Tarkov 치트/g, 'Escape from Tarkov 치트');
-	content = content.replace(/Tarkov作弊/g, 'Escape from Tarkov作弊');
-	content = content.replace(/Tarkov rehberleri/g, 'Escape from Tarkov rehberleri');
-	content = content.replace(/Tarkov gidsen/g, 'Escape from Tarkov gidsen');
-	content = content.replace(/Tarkov průvodce/g, 'Escape from Tarkov průvodce');
-	content = content.replace(/Tarkov guider/g, 'Escape from Tarkov guider');
-	content = content.replace(/Tarkov related/g, 'Escape from Tarkov related');
-	content = content.replace(/Tarkov ガイド/g, 'Escape from Tarkov ガイド');
-	content = content.replace(/Tarkov 가이드/g, 'Escape from Tarkov 가이드');
-	content = content.replace(/Tarkov指南/g, 'Escape from Tarkov指南');
-	content = content.replace(/Tarkov गाइड/g, 'Escape from Tarkov गाइड');
-	content = content.replace(/Tarkov panduan/g, 'Escape from Tarkov panduan');
-	content = content.replace(/Tarkov คู่มือ/g, 'Escape from Tarkov คู่มือ');
-	content = content.replace(/Tarkov hướng dẫn/g, 'Escape from Tarkov hướng dẫn');
+	content = content.replace(/Squad guides/g, 'Squad guides');
+	content = content.replace(/Squad guide/g, 'Squad guide');
+	content = content.replace(/Squad hileleri/g, 'Squad hileleri');
+	content = content.replace(/Squad hile/g, 'Squad hile');
+	content = content.replace(/cheat Squad/g, 'cheat Squad');
+	content = content.replace(/cheats Squad/g, 'cheats Squad');
+	content = content.replace(/trucos Squad/g, 'trucos Squad');
+	content = content.replace(/triche Squad/g, 'triche Squad');
+	content = content.replace(/trucchi Squad/g, 'trucchi Squad');
+	content = content.replace(/cheatów Squad/g, 'cheatów Squad');
+	content = content.replace(/читов Squad/g, 'читов Squad');
+	content = content.replace(/читів Squad/g, 'читів Squad');
+	content = content.replace(/Squadチート/g, 'Squadチート');
+	content = content.replace(/Squad 치트/g, 'Squad 치트');
+	content = content.replace(/Squad作弊/g, 'Squad作弊');
+	content = content.replace(/Squad rehberleri/g, 'Squad rehberleri');
+	content = content.replace(/Squad gidsen/g, 'Squad gidsen');
+	content = content.replace(/Squad průvodce/g, 'Squad průvodce');
+	content = content.replace(/Squad guider/g, 'Squad guider');
+	content = content.replace(/Squad related/g, 'Squad related');
+	content = content.replace(/Squad ガイド/g, 'Squad ガイド');
+	content = content.replace(/Squad 가이드/g, 'Squad 가이드');
+	content = content.replace(/Squad指南/g, 'Squad指南');
+	content = content.replace(/Squad गाइड/g, 'Squad गाइड');
+	content = content.replace(/Squad panduan/g, 'Squad panduan');
+	content = content.replace(/Squad คู่มือ/g, 'Squad คู่มือ');
+	content = content.replace(/Squad hướng dẫn/g, 'Squad hướng dẫn');
 	await writeFile(file, content, 'utf8');
 	console.log('Fixed locales.ts blogUi');
 }
 
-console.log('=== Tarkov Cheats SEO completion ===\n');
+console.log('=== Squad Hacks SEO completion ===\n');
 await applyGlobalFixes();
 await createExtraPages();
 await fixLocalesBlogUi();

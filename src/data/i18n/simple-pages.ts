@@ -50,16 +50,16 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 			{
 				h2: 'ESP & wallhack',
 				paragraphs: [
-					'See PMCs, Scavs, bosses, and loot through walls with distance readouts.',
-					'Use filters so the overlay stays clear in dorms, Factory, and scav-run chaos.',
+					'See infantry, vehicles, and HABs through walls with distance readouts.',
+					'Use filters so the overlay stays clear on urban layers, Narva, and vehicle pushes.',
 				],
-				list: ['Player boxes & distance', 'Loot and extract markers', 'Boss and Scav filters'],
+				list: ['Player boxes & distance', 'HAB and rally markers', 'Infantry and vehicle filters'],
 			},
 			{
 				h2: 'Aimbot & soft aim',
 				paragraphs: [
 					'Aim help you can tune to feel natural.',
-					'Set FOV, smoothness, and bone priority per weapon before you raid.',
+					'Set FOV, smoothness, and bone priority per weapon before you play.',
 				],
 				list: ['Smooth aim strength', 'FOV and bone priority', 'Hotkeys mid-match'],
 			},
@@ -67,17 +67,17 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 				h2: 'Radar',
 				paragraphs: [
 					'A simple 2D radar for threats outside your view.',
-					'Spot flanks near extracts without filling the whole screen.',
+					'Spot flanks near rallies without filling the whole screen.',
 				],
-				list: ['Nearby enemy cues', 'Adjustable range', 'Works in PMC & Scav'],
+				list: ['Nearby enemy cues', 'Adjustable range', 'Works in infantry & vehicle'],
 			},
 			{
-				h2: 'Updates & support',
+				h2: 'Cloud DMA',
 				paragraphs: [
-					'We rebuild after big {game} or {antiCheat} patches.',
-					'Check Status before you play after a patch day.',
+					'Cloud DMA runs {brand} from our cloud. You do not need a second PC.',
+					'ESP, soft aim, and radar stay in the same license. Check Status after a patch before you play.',
 				],
-				list: ['Status on the Status page', 'Setup guide included', 'Email support with your order ID'],
+				list: ['No second PC required', 'Same ESP, aim, and radar', 'Status notes after patches'],
 			},
 		],
 	}),
@@ -95,9 +95,9 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 				h2: 'What you get',
 				paragraphs: [
 					'Full package access for Windows 10 / 11.',
-					'Same ESP, soft aim, and radar on monthly and lifetime plans.',
+					'Same ESP, soft aim, radar, and Cloud DMA on monthly and lifetime plans.',
 				],
-				list: ['ESP, aimbot, and radar', 'Patch rebuilds while active', 'Digital delivery after checkout'],
+				list: ['ESP, aimbot, and radar', 'Cloud DMA included', 'Digital delivery after checkout'],
 			},
 			{
 				h2: 'Plans',
@@ -124,18 +124,18 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 		h1: 'Status',
 		intro: brandCopy.statusIntro,
 		ctaPrimary: brandCopy.ctaBuy,
-		ctaSecondary: 'Tarkov Cheats overview',
-		ctaSecondaryHref: '/tarkov-cheats/',
+		ctaSecondary: 'Squad Hacks overview',
+		ctaSecondaryHref: '/squad-hacks/',
 		galleryTitle: 'In-game look',
 		sections: [
 			{
 				h2: 'Current status',
 				paragraphs: [
-					'As of 13 Aug 2026 the package is online for Escape from Tarkov on Windows PC. We post a new note here when a game or BattlEye patch needs a rebuild.',
-					'If Status is green, you can raid. If we are rebuilding, wait for the next note.',
+					'As of 13 Aug 2026 the package is online for Squad on Windows PC. We post a new note here when a game or Easy Anti-Cheat patch needs a rebuild.',
+					'If Status is green, you can play. If we are rebuilding, wait for the next note.',
 				],
 				list: [
-					'Check this page before every raid after a patch',
+					'Check this page before every match after a patch',
 					'Monthly and lifetime licenses get rebuilds while active',
 					'No cheat stays undetected forever — status first, then play',
 				],
@@ -157,34 +157,34 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 	hacks: page({
 		title: brandSeo.previewTitle,
 		description: brandSeo.previewDescription,
-		h1: 'Tarkov Cheats',
+		h1: 'Squad Hacks',
 		intro: brandCopy.previewIntro,
 		ctaPrimary: brandCopy.ctaBuy,
 		ctaSecondary: 'View features',
 		ctaSecondaryHref: '/features/',
-		galleryTitle: 'In-raid look',
+		galleryTitle: 'In-match look',
 		sections: [
 			{
 				h2: 'What you get',
 				paragraphs: [
-					'One license for Escape from Tarkov on Windows PC — built for PMC raids and Scav runs.',
+					'One license for Squad on Windows PC — built for infantry and vehicle matches.',
 				],
 				list: [
 					'ESP / wallhack with distance',
 					'Soft aim & aimbot profiles',
 					'2D radar for flanks',
-					'BattlEye rebuilds after patches',
+					'Cloud DMA — no second PC',
 				],
 			},
 			{
-				h2: 'Built for Tarkov raids',
+				h2: 'Built for Squad matches',
 				paragraphs: [
-					'Read PMCs and Scavs before you push, mark loot worth the risk, and stay aware near extracts. Tune soft aim per weapon class for dorms, Factory, and long-range maps.',
+					'Read infantry and vehicles before you push, mark HABs worth the fight, and stay aware near rallies. Tune soft aim per weapon class for urban layers, Narva, and long-range maps.',
 				],
 				list: [
-					'<a href="/tarkov-esp/">ESP guide</a>',
-					'<a href="/tarkov-aimbot/">Aimbot controls</a>',
-					'<a href="/tarkov-radar-hack/">Radar overlay</a>',
+					'<a href="/squad-esp/">ESP guide</a>',
+					'<a href="/squad-aimbot/">Aimbot controls</a>',
+					'<a href="/squad-radar-hack/">Radar overlay</a>',
 					'<a href="/updates/">Live status</a>',
 				],
 			},
@@ -199,52 +199,52 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 			},
 		],
 	}),
-	'tarkov-esp': page({
-		title: 'Tarkov ESP | {brand}',
+	'squad-esp': page({
+		title: 'Squad ESP | {brand}',
 		description:
-			'Tarkov ESP and wallhack for Escape from Tarkov on Windows PC — player boxes, distance, loot filters, and clear overlays in raids.',
+			'Squad ESP and wallhack for Squad on Windows PC — player boxes, distance, HAB filters, and clear overlays in matches.',
 		h1: 'ESP',
-		intro: 'See players and loot through walls during Tarkov raids. Part of the same {brand} license.',
+		intro: 'See players and vehicles through walls during Squad matches. Part of the same {brand} license.',
 		ctaPrimary: brandCopy.ctaBuy,
-		ctaSecondary: 'Tarkov Cheats overview',
-		ctaSecondaryHref: '/tarkov-cheats/',
-		galleryTitle: 'ESP in raid',
+		ctaSecondary: 'Squad Hacks overview',
+		ctaSecondaryHref: '/squad-hacks/',
+		galleryTitle: 'ESP in match',
 		sections: [
 			{
 				h2: 'What ESP shows',
-				paragraphs: ['Boxes, distance, and filters for PMCs, Scavs, bosses, and loot.'],
-				list: ['Player ESP', 'Loot markers', 'Boss and Scav filters'],
+				paragraphs: ['Boxes, distance, and filters for infantry, vehicles, and HABs.'],
+				list: ['Player ESP', 'HAB and vehicle markers', 'Infantry and vehicle filters'],
 			},
 			{
 				h2: 'When to use it',
-				paragraphs: ['Clear dorms, Factory, and scav runs without flooding the screen.'],
+				paragraphs: ['Clear urban layers, Narva, and vehicle fights without flooding the screen.'],
 				list: ['Tune opacity', 'Filter noise', 'Pair with radar'],
 			},
 			{
 				h2: 'Next steps',
 				paragraphs: ['ESP is included with aimbot and radar in one plan.'],
 				list: [
-					'<a href="/tarkov-cheats/">Full product</a>',
+					'<a href="/squad-hacks/">Full product</a>',
 					'<a href="/features/">All features</a>',
 					'<a href="/pricing/">Store</a>',
 				],
 			},
 		],
 	}),
-	'tarkov-aimbot': page({
-		title: 'Tarkov Aimbot | {brand}',
+	'squad-aimbot': page({
+		title: 'Squad Aimbot | {brand}',
 		description:
-			'Tarkov aimbot and soft aim for Escape from Tarkov on Windows PC — FOV, smoothness, and bone priority you can tune per weapon.',
+			'Squad aimbot and soft aim for Squad on Windows PC — FOV, smoothness, and bone priority you can tune per weapon.',
 		h1: 'Aimbot',
-		intro: 'Soft aim and aim assist you can tune for Tarkov. Included in the same {brand} license.',
+		intro: 'Soft aim and aim assist you can tune for Squad. Included in the same {brand} license.',
 		ctaPrimary: brandCopy.ctaBuy,
-		ctaSecondary: 'Tarkov Cheats overview',
-		ctaSecondaryHref: '/tarkov-cheats/',
+		ctaSecondary: 'Squad Hacks overview',
+		ctaSecondaryHref: '/squad-hacks/',
 		galleryTitle: 'Aimbot view',
 		sections: [
 			{
 				h2: 'Controls',
-				paragraphs: ['Set FOV, smoothness, and bone priority before you raid.'],
+				paragraphs: ['Set FOV, smoothness, and bone priority before you play.'],
 				list: ['Soft aim strength', 'Bone priority', 'Hotkeys mid-match'],
 			},
 			{
@@ -256,7 +256,7 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 				h2: 'Next steps',
 				paragraphs: ['Aimbot ships with ESP and radar in one license.'],
 				list: [
-					'<a href="/tarkov-cheats/">Full product</a>',
+					'<a href="/squad-hacks/">Full product</a>',
 					'<a href="/features/">All features</a>',
 					'<a href="/pricing/">Store</a>',
 				],
@@ -264,27 +264,27 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 		],
 	}),
 	radar: page({
-		title: 'Tarkov Radar | {brand}',
+		title: 'Squad Radar | {brand}',
 		description:
-			'Tarkov 2D radar for Escape from Tarkov on Windows PC — flank cues near extracts without filling the whole screen.',
+			'Squad 2D radar for Squad on Windows PC — flank cues near rallies without filling the whole screen.',
 		h1: 'Radar',
 		intro: 'A simple 2D radar for threats outside your view. Included in the same {brand} license.',
 		ctaPrimary: brandCopy.ctaBuy,
-		ctaSecondary: 'Tarkov Cheats overview',
-		ctaSecondaryHref: '/tarkov-cheats/',
+		ctaSecondary: 'Squad Hacks overview',
+		ctaSecondaryHref: '/squad-hacks/',
 		galleryTitle: 'Radar overlay',
 		sections: [
 			{
 				h2: 'What it shows',
-				paragraphs: ['Nearby enemy cues with adjustable range for PMC and Scav runs.'],
-				list: ['Flank awareness', 'Extract approaches', 'Adjustable range'],
+				paragraphs: ['Nearby enemy cues with adjustable range for infantry and vehicle runs.'],
+				list: ['Flank awareness', 'Rally approaches', 'Adjustable range'],
 			},
 			{
 				h2: 'With ESP',
 				paragraphs: ['Use radar for threats you cannot see yet. Use ESP when you push.'],
 				list: [
-					'<a href="/tarkov-esp/">ESP guide</a>',
-					'<a href="/tarkov-cheats/">Full product</a>',
+					'<a href="/squad-esp/">ESP guide</a>',
+					'<a href="/squad-hacks/">Full product</a>',
 					'<a href="/pricing/">Store</a>',
 				],
 			},
@@ -303,7 +303,7 @@ export const simplePageCopy: Partial<Record<PageId, SimplePageCopy>> = {
 			{
 				h2: 'Before you install',
 				paragraphs: ['Buy a plan first. You get a license by email.'],
-				list: ['Windows 10 / 11 PC', 'Disable conflicting overlays', 'Have your order email ready'],
+				list: ['Windows 10 / 11 PC', 'Cloud DMA — no second PC needed', 'Have your order email ready'],
 			},
 			{
 				h2: 'Install steps',

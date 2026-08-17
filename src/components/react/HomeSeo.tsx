@@ -17,9 +17,10 @@ function HomeSeoInner({ faqs }: Props) {
 			hintKey: 'homeSeo.catFeaturesHint',
 			links: [
 				{ href: '/features/', labelKey: 'homeSeo.linkAllFeatures' },
-				{ href: '/tarkov-esp/', labelKey: 'homeSeo.linkEsp' },
-				{ href: '/tarkov-aimbot/', labelKey: 'homeSeo.linkAimbot' },
-				{ href: '/tarkov-radar-hack/', labelKey: 'homeSeo.linkRadar' },
+				{ href: '/squad-esp/', labelKey: 'homeSeo.linkEsp' },
+				{ href: '/squad-aimbot/', labelKey: 'homeSeo.linkAimbot' },
+				{ href: '/squad-radar-hack/', labelKey: 'homeSeo.linkRadar' },
+				{ href: '/faq/what-is-cloud-dma/', labelKey: 'homeSeo.linkCloudDma' },
 			],
 		},
 		{
@@ -27,7 +28,7 @@ function HomeSeoInner({ faqs }: Props) {
 			hintKey: 'homeSeo.catStatusHint',
 			links: [
 				{ href: '/updates/', labelKey: 'homeSeo.linkLiveStatus' },
-				{ href: '/tarkov-cheats/', labelKey: 'homeSeo.linkUndetected' },
+				{ href: '/squad-hacks/', labelKey: 'homeSeo.linkUndetected' },
 				{ href: '/setup/', labelKey: 'homeSeo.linkSetup' },
 				{ href: '/faq/', labelKey: 'homeSeo.linkFaq' },
 			],
@@ -38,7 +39,7 @@ function HomeSeoInner({ faqs }: Props) {
 			links: [
 				{ href: '/pricing/', labelKey: 'homeSeo.linkPlans' },
 				{ href: '/reviews/', labelKey: 'homeSeo.linkReviews' },
-				{ href: '/tarkov-cheats/', labelKey: 'homeSeo.linkTarkovCheats' },
+				{ href: '/squad-hacks/', labelKey: 'homeSeo.linkSquadCheats' },
 				{ href: '/features/', labelKey: 'homeSeo.linkAllFeatures' },
 			],
 		},

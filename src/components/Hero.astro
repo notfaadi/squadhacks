@@ -2,7 +2,8 @@
 import HeroApp from './react/Hero';
 import type { LocaleCode } from '../data/i18n/locales';
 import { defaultLocale } from '../data/i18n/locales';
-import { productInfo, siteConfig } from '../data/site';
+import { fillBrandTokens, productInfo, siteConfig } from '../data/site';
+import { brandCopy } from '../data/site-core';
 import { heroWidth, heroHeight, heroSrcSet, heroSizes, heroSrc } from '../lib/responsive-images';
 
 interface Props {
@@ -25,17 +26,24 @@ const monthly = productInfo.plans.find((p) => p.id === 'monthly') ?? productInfo
 	heroWidth={heroWidth}
 	heroHeight={heroHeight}
 	useBrandHero={locale === 'en'}
+	heroLede={productInfo.heroLede}
+	chips={{
+		chipEsp: fillBrandTokens(brandCopy.chipEsp),
+		chipAim: fillBrandTokens(brandCopy.chipAim),
+		chipRadar: fillBrandTokens(brandCopy.chipRadar),
+		chipUpdates: fillBrandTokens(brandCopy.chipUpdates),
+	}}
 />
 
 <style is:global>
 	.hero {
-		--hero-pad-y: clamp(1rem, 2vw, 1.75rem);
+		--hero-pad-y: clamp(1.25rem, 2.4vw, 2.25rem);
 		--hero-stack: clamp(0.5rem, 1.1vw, 0.75rem);
 		/*
-		 * Bar is a bit shorter than the native 1024/409 (~2.5:1) art.
-		 * Image stays undistorted via object-fit: cover (crops edges, no squash).
+		 * Native art is ~1024/409 (~2.5:1). Use a taller band so the soldier
+		 * and red chevrons stay in frame instead of a thin cropped strip.
 		 */
-		--hero-ratio: 3.15 / 1;
+		--hero-ratio: 2.15 / 1;
 		position: relative;
 		isolation: isolate;
 		display: grid;
@@ -45,7 +53,7 @@ const monthly = productInfo.plans.find((p) => p.id === 'monthly') ?? productInfo
 		aspect-ratio: var(--hero-ratio);
 		width: 100%;
 		height: auto;
-		min-height: 0;
+		min-height: min(36rem, 68vh);
 		max-height: none;
 	}
 
@@ -65,8 +73,8 @@ const monthly = productInfo.plans.find((p) => p.id === 'monthly') ?? productInfo
 	.hero__media img {
 		/* Cover = keep proportions; crop top/bottom of the shorter bar */
 		object-fit: cover;
-		/* Prefer a bit higher in the frame so the USEC head stays in view */
-		object-position: right 28%;
+		/* Keep the soldier on the right; leave dark space for the headline */
+		object-position: right center;
 		image-rendering: auto;
 		transform: translateZ(0);
 		animation: hero-in 0.9s ease-out both;
@@ -297,7 +305,7 @@ const monthly = productInfo.plans.find((p) => p.id === 'monthly') ?? productInfo
 
 		.hero__media img {
 			object-fit: cover;
-			object-position: 78% 10%;
+			object-position: 86% 30%;
 		}
 
 		.hero__veil {
